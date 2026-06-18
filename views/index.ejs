@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>List Books</title>
+  </head>
+
+  <body>
+    <nav class="nav-section-stl">List you Books</nav>
+
+    <div>
+      <form action="/new" method="post" class="form-style">
+
+      <h2>Add Books</h2>
+
+
+        <input class="add-book-input" type="text" name="newTitle" placeholder="Title" autofocus="true" />
+
+        <input class="add-book-input" type="text" name="newImage" placeholder="Image name e.g 00000001.jpeg" autofocus="true" />
+
+        <input class="add-book-input" type="text" name="newDescription" placeholder="Description/notes" autofocus="true" />
+
+        <input class="add-book-input" type="number" name="newRating" min="0" max="5"  placeholder="Rating" autofocus="true" />
+
+        <button class="add-book-input-button" type="submit" >ADD</button>
+        
+      </form>
+    </div>
+    
+    <h3>Books read: <%= bookCount %></h3>
+
+    <div class="book-body-display">
+      <% for(let book of books){ %>
+        <div class="book-card-body">
+            <!-- plain labels distinct from input IDs -->
+            <h2 id="display-title<%= book.id %>"><%= book.title %></h2>
+            <p id="display-rating<%= book.id %>" >Rating <%= book.rating %>/5</p>
+            <img src="https://covers.openlibrary.org/b/id/<%= book.image %>" id="display-image<%= book.id %>" />
+            <p id="display-desc<%= book.id %>"><%= book.description %></p>
+
+            <form action="/edit" method="post">
+                <input class="edit-form-stl-input" type="hidden" name="updatedItemId" value="<%= book.id %>">
+                
+                <!--  Unique IDs specific only to these inputs -->
+                
+                <input class="edit-form-stl-input" id="input-title<%= book.id %>" type="text" name="updatedItemTitle" value="<%= book.title %>" autocomplete="off" hidden="true" />
+
+                <input class="edit-form-stl-input" id="input-rating<%= book.id %>" type="text" name="updatedItemRating" value="<%= book.rating %>" autocomplete="off" hidden="true" />
+
+                 <input class="edit-form-stl-input" id="input-image<%= book.id %>" type="text" name="updatedItemImage" value="<%= book.image %>" autocomplete="off" hidden="true" />
+
+
+                <input class="edit-form-stl-input" id="input-desc<%= book.id %>" type="text" name="updatedItemDescription" value="<%= book.description %>" autocomplete="off" hidden="true" />
+
+                <button class="edit-form-stl-btn" id="done<%= book.id %>" class="edit" type="submit" hidden>save</button>
+            </form>
+            <button class="edit-form-button" id="edit<%= book.id %>" class="edit" onclick="handler('<%= book.id %>')">edit</button>   
+        </div>
+      <% } %>
+    </div>
+
+    <script>
+    function handler(id) {
+      // 1. Hide the static display elements
+      document.getElementById("display-title" + id).setAttribute("hidden", "true");
+      document.getElementById("display-rating" + id).setAttribute("hidden", "true");
+      document.getElementById("display-image" + id).setAttribute("hidden", "true");
+      document.getElementById("display-desc" + id).setAttribute("hidden", "true");
+      document.getElementById("edit" + id).setAttribute("hidden", "true");
+      
+      // 2. Reveal the hidden inputs and the save button
+      document.getElementById("done" + id).removeAttribute("hidden");
+      document.getElementById("input-title" + id).removeAttribute("hidden");
+      document.getElementById("input-rating" + id).removeAttribute("hidden");
+      document.getElementById("input-image" + id).removeAttribute("hidden");
+      document.getElementById("input-desc" + id).removeAttribute("hidden");
+    }
+    </script>
+  </body>
+</html>

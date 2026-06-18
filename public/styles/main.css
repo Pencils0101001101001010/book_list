@@ -1,0 +1,89 @@
+body {
+  margin: 0px;
+  background-color: rgb(203, 203, 203);
+}
+
+.nav-section-stl {
+  background-color: rgb(95, 125, 115);
+  height: 2rem;
+  padding: 5px;
+  align-content: center;
+  text-transform: uppercase;
+  font-size: larger;
+  box-shadow: 0px 0px 30px 10px;
+}
+
+.form-style {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-book-input {
+  padding: 0.5rem;
+  margin: 7px;
+  border: none;
+  border-radius: 15px;
+}
+
+.add-book-input-button {
+  padding: 0.5rem;
+  margin: 7px;
+  background-color: rgb(95, 125, 115);
+  border: none;
+  border-radius: 15px;
+}
+
+.add-book-input-button:hover {
+  background-color: rgb(48, 99, 82);
+}
+
+.book-body-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  margin: 1rem;
+}
+
+.book-card-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 50px 1fr auto auto 50px;
+  justify-items: center;
+  padding: 1rem;
+  margin: 2px;
+  border: gray solid 1px;
+  border-radius: 15px;
+  background: rgba(95, 125, 115, 0.439);
+  box-shadow: 1px 8px 40px 1px;
+}
+
+.edit-form-button {
+  width: 100px;
+  border: none;
+  background-color: rgb(95, 125, 115);
+  border-radius: 15px;
+}
+
+.edit-form-stl-input {
+  padding: 0.5rem;
+  margin: 7px;
+  border: none;
+  border-radius: 15px;
+}
+
+.edit-form-stl-btn {
+  padding: 0.5rem;
+  margin: 7px;
+  background-color: rgb(95, 125, 115);
+  border: none;
+}
+
+.edit-form-stl-btn:hover {
+  background-color: rgb(48, 99, 82);
+}
+
+.edit-form-button:hover {
+  background-color: rgb(48, 99, 82);
+}
